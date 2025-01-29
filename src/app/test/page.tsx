@@ -1,14 +1,12 @@
 "use client"
 
-import AllMissing from "@/components/All-Missing"
-import Family_Report_Page from "@/components/Family-Report"
-export default function Testing(){
-
+import UploadForm from "@/components/Upload-Missing"
+export default function TextApp(){
   return(
+
     <div>
-      {/* <AllMissing /> */}
-      <Family_Report_Page />
-    </div>
-  )
+      <UploadForm />
+    </div>
+  )
 
 }
