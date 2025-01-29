@@ -1,11 +1,11 @@
 "use client"
-import Prelogin from "@/components/Prelogin"
 
-export default function TestPage(){
-
+import UploadForm from "@/components/Upload-Missing"
+export default function TextApp(){
   return(
+
     <div>
-      <Prelogin />
+      <UploadForm />
     </div>
   )
 
