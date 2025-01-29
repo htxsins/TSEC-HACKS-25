@@ -1,11 +1,11 @@
 "use client"
 
-
-export default function TestPage(){
-
+import UploadForm from "@/components/Upload-Missing"
+export default function TextApp(){
   return(
+
     <div>
-      This is a Test Page
+      <UploadForm />
     </div>
   )
 
