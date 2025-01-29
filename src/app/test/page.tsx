@@ -10,8 +10,8 @@ export default function TextApp(){
       {/* <UploadForm /> */}
       {/* <AllMissing /> */}
       {/* <TanmayUploadPage/> */}
-
      <UploadAadhar/>
     </div>
-  )
+  ) 
+
 }

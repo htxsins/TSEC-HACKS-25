@@ -89,7 +89,7 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
-  "description": "",
+  "description": "- To Do\r 1. Upgade Firebase as needed for Functions and Storage\r 2. Use API As needed",
   "main": "index.js",
   "keywords": [],
   "author": "",
