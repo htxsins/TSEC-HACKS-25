@@ -1,6 +1,5 @@
-"use client";
-
 import { useState } from "react";
+import bcrypt from "bcryptjs";
 import { db, storage } from "@/config/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { collection, doc, setDoc } from "firebase/firestore";
@@ -36,22 +35,9 @@ export default function UploadAadhar() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  // Function to fetch image and convert to Base64
-  const getBase64 = async (filePath) => {
-    try {
-      const response = await fetch(filePath);
-      const blob = await response.blob();
-      return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(blob);
-        reader.onloadend = () => {
-          resolve(reader.result.split(",")[1]); // Extract Base64 string
-        };
-      });
-    } catch (error) {
-      console.error("Error converting to Base64:", error);
-      return null;
-    }
+  // Function to hash Aadhaar data
+  const hashData = (data) => {
+    return bcrypt.hashSync(data, 10); // 10 is the salt rounds
   };
 
   const uploadData = async () => {
@@ -62,9 +48,12 @@ export default function UploadAadhar() {
       try {
         const filePath = `${person.Photo}`;
 
-        // Convert image to Base64 binary string
-        const binaryString = await getBase64(filePath);
-        if (!binaryString) throw new Error("Failed to encode image");
+        // Hash sensitive data (e.g., Aadhaar number, Name, etc.)
+        const hashedAadharNo = hashData(person.AadharCardNo);
+        const hashedName = hashData(person.Name);
+        const hashedDOB = hashData(person.DOB);
+        const hashedAddress = hashData(person.Address);
+        const hashedGender = hashData(person.Gender);
 
         // Fetch the image as a blob
         const response = await fetch(filePath);
@@ -77,14 +66,14 @@ export default function UploadAadhar() {
         // Get Image URL
         const downloadURL = await getDownloadURL(storageRef);
 
-        // Store data in Firestore
-        await setDoc(doc(collection(db, "AadharCard"), person.AadharCardNo), {
-          Name: person.Name,
-          DOB: person.DOB,
-          Address: person.Address,
+        // Store hashed data in Firestore
+        await setDoc(doc(collection(db, "AadhaarCard"), person.AadharCardNo), {
+          AadharCardNo: hashedAadharNo,
+          Name: hashedName,
+          DOB: hashedDOB,
+          Address: hashedAddress,
           Photo: downloadURL,
-          BinaryEncodedString: binaryString, // Store Base64 encoded string
-          Gender: person.Gender,
+          Gender: hashedGender,
         });
 
         console.log(`Uploaded ${person.Name} successfully!`);
