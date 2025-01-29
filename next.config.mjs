@@ -9,7 +9,7 @@ const nextConfig = {
         port: "",
       },
     ],
-    domains: ['res.cloudinary.com'],
+    domains: ['res.cloudinary.com', 'hebbkx1anhila5yf.public.blob.vercel-storage.com'],
   },
   webpack: (config) => {
     // Resolve aliases
