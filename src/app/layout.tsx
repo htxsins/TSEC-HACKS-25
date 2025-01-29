@@ -6,6 +6,8 @@ import { ThemeProvider } from "@/components/Theme-Provider";
 import { Toaster } from "@/components/ui/toaster";
 import type { Metadata } from "next";
 import { UserProvider } from "@/providers/UserProvider";
+import EmergencyAlert from "@/components/Emergency"
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,6 +35,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             {children}
+            <EmergencyAlert />
             <Toaster />
           </ThemeProvider>
         </UserProvider>
