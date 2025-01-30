@@ -3,14 +3,16 @@
 import UploadForm from "@/components/Upload-Missing"
 import AllMissing from "@/components/All-Missing"
 import TanmayUploadPage from "@/components/TanmayUpload"
-import UploadAadhar from "@/components/UploadAadharCard"
+// import UploadAadhar from "@/components/UploadAadharCard"
+import MissingPersonsHeatmap from "@/components/Mappage"
 export default function TextApp(){
   return(
     <div>
       {/* <UploadForm /> */}
       {/* <AllMissing /> */}
       {/* <TanmayUploadPage/> */}
-     <UploadAadhar/>
+     {/* <UploadAadhar/> */}
+     <MissingPersonsHeatmap />
     </div>
   ) 
 
