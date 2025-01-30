@@ -20,10 +20,10 @@ interface MissingPersonCardProps {
 
 export default function MissingPersonCard({ url, age, gender, race, eyeColor, identifiedBy }: MissingPersonCardProps) {
   return (
-    <Card className="overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 w-full max-w-2xl">
+    <Card className="overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 w-full max-w-5xl"> {/* Changed from max-w-2xl to max-w-4xl */}
       <div className="flex flex-col sm:flex-row h-full">
-        {/* Image Section */}
-        <div className="w-full sm:w-1/3 h-48 sm:h-auto relative">
+        {/* Image Section - Changed to w-2/5 (40%) */}
+        <div className="w-full sm:w-2/5 h-48 sm:h-auto relative">
           <Image
             src={url || "/placeholder.svg?height=300&width=400"}
             alt="Missing Person"
@@ -32,11 +32,11 @@ export default function MissingPersonCard({ url, age, gender, race, eyeColor, id
           />
         </div>
 
-        {/* Content Section */}
-        <div className="flex flex-col flex-1">
+        {/* Content Section - Changed to w-3/5 (60%) */}
+        <div className="flex flex-col flex-1 sm:w-3/5">
           <CardContent className="flex-1 p-6">
             <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-7">
                 {[
                   { label: "Age", value: age },
                   { label: "Gender", value: gender },
@@ -69,4 +69,3 @@ export default function MissingPersonCard({ url, age, gender, race, eyeColor, id
     </Card>
   )
 }
-

@@ -10,6 +10,12 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+		fontFamily: {
+			alatsi: ['Alatsi', 'sans-serif'],
+			montserrat: ['Montserrat', 'sans-serif'],
+			poppins: ['Poppins', 'sans-serif'],
+			roboto: ['Roboto', 'sans-serif'],
+		  },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
